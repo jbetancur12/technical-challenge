@@ -9,7 +9,7 @@ export default function Dropdown(props) {
       <button className="dropbtn">{props.name}</button>
       <div className="dropdown-content">
         {props.data.map((prop) => (
-          <Link to="/" key={prop.id} to={prop.url} className={prop.class || ''}>
+          <Link key={prop.id} to={prop.url} className={prop.class || ''}>
             {prop.name}
           </Link>
         ))}
