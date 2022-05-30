@@ -6,13 +6,17 @@ import Filter from './Filter/Filter'
 import ProfileInformation from './ProfileInformation/ProfileInformation'
 import RepoCard from './RepoCard/RepoCard'
 
-export default function Main() {
+export default function Main(props) {
   const API_URL = 'https://api.github.com/'
   const { username } = useParams()
   const [User, setUser] = useState([])
   const [Repos, setRepos] = useState([])
+
   useEffect(() => {
-    getUserInfo(`${API_URL}users/${username}`).then((resp) => setUser(resp))
+    getUserInfo(`${API_URL}users/${username}`).then((resp) => {
+      setUser(resp)
+      props.setRepositories(resp.public_repos)
+    })
   }, [username])
 
   useEffect(() => {

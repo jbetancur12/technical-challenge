@@ -41,3 +41,18 @@
 .navgit-hr {
   margin: 0;
 }
+
+.counter {
+  display: inline-block;
+  min-width: 20px;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: c9d1d9;
+  text-align: center;
+  background-color: rgba(110, 118, 129, 0.4);
+  border: 1px solid #fff;
+  border-radius: 2em;
+  margin-left: 8px;
+}

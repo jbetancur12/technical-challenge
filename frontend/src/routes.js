@@ -12,15 +12,24 @@ import Main from './Component/Main'
 import Nav from './Component/Nav/Nav'
 import { getUserInfo } from './help/request'
 
-export const AppRouter = () => (
-  <Router>
-    <Header />
-    <Nav />
-    <Switch>
-      <Route exact path="/:username" component={Main} />
-      <Route path="*">
-        <Redirect to="/yknx4" />
-      </Route>
-    </Switch>
-  </Router>
-)
+export const AppRouter = () => {
+  const [repositories, setRepositories] = useState(0)
+  console.log(repositories)
+
+  return (
+    <Router>
+      <Header />
+      <Nav publicRepos={repositories} />
+      <Switch>
+        <Route
+          exact
+          path="/:username"
+          render={(props) => <Main setRepositories={setRepositories} />}
+        />
+        <Route path="*">
+          <Redirect to="/yknx4" />
+        </Route>
+      </Switch>
+    </Router>
+  )
+}

@@ -1,5 +1,4 @@
 function NoRelativeDay(publishDate, localeString) {
-  console.log('Entro')
   const dateOptions = {
     timeZone: 'America/Bogota',
     month: 'short'
