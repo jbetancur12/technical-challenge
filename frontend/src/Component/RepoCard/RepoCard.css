@@ -1,0 +1,54 @@
+.repo-link {
+  color: #0a58ca;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.repo-description {
+  color: #8b949e;
+}
+
+.repo-topic {
+  color: #58a6ff;
+  background-color: rgba(56, 139, 253, 0.15);
+  border-radius: 2em;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 22px;
+  text-decoration: none;
+  margin-right: 4px;
+}
+
+.repo-label {
+  color: 5f666d;
+  display: inline-block;
+  padding: 0 7px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: 2em;
+  border-color: #ced4db;
+  margin-left: 5px;
+  vertical-align: middle;
+  text-transform: capitalize;
+}
+.repo-info {
+  display: inline-flex;
+}
+.repo-info_item {
+  margin-right: 15px;
+}
+
+.repo-info_languageColor {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  /* border: 1px solid var(--color-primer-border-contrast); */
+  border-radius: 50%;
+  margin-right: 5px;
+}
