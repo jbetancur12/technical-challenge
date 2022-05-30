@@ -48,7 +48,7 @@ export default function Filter(props) {
                 placeholder="Find a repository..."
               />
             </div>
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap mt-3">
               {' '}
               <select name="" id="select-language">
                 <option value="">Language</option>
