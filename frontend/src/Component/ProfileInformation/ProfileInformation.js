@@ -1,3 +1,4 @@
+import { Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './ProfileInformation.css'
 
@@ -5,16 +6,23 @@ export default function ProfileInformation(props) {
   const profile = props.user
   return (
     <div id="info">
-      <img
-        src={profile.avatar_url}
-        height="260"
-        width="260"
-        alt={profile.avatar_url}
-      />
-      <h1>
-        <div className="name">{profile.name}</div>
-        <div className="username">{profile.login}</div>
-      </h1>
+      <Row className="m-3">
+        <Col md={12} xs={4}>
+          <img
+            src={profile.avatar_url}
+            height="260"
+            width="260"
+            alt={profile.avatar_url}
+          />
+        </Col>
+        <Col md={12} xs={8} className="d-flex align-items-center">
+          <h1>
+            <div className="name">{profile.name}</div>
+            <div className="username">{profile.login}</div>
+          </h1>
+        </Col>
+      </Row>
+
       <Link to="/" className="btn">
         Follow
       </Link>

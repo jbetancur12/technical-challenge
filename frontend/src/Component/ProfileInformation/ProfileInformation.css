@@ -15,6 +15,19 @@
   box-shadow: 0 0 0 1px rgba(240, 246, 252, 0.1);
 }
 
+@media only screen and (max-width: 768px) {
+  #info img {
+    width: 100%;
+    height: auto;
+  }
+
+  #info {
+    position: relative;
+    margin-top: 16px;
+    z-index: 100;
+  }
+}
+
 #info h1 .name {
   font-size: 24px;
 }
