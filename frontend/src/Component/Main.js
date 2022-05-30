@@ -28,7 +28,19 @@ export default function Main() {
           <Filter repos={Repos} />
           {Repos.length > 0 &&
             Repos.map((repo) => (
-              <RepoCard r={repo} username={User.login} key={repo.name} />
+              <RepoCard
+                name={repo.name}
+                description={repo.description}
+                topics={repo.topics}
+                visibility={repo.visibility}
+                updated_at={repo.updated_at}
+                language={repo.language}
+                stargazers_count={repo.stargazers}
+                forks_counts={repo.forkers}
+                license={repo.license}
+                username={User.login}
+                key={repo.name}
+              />
             ))}
         </Col>
       </Row>
