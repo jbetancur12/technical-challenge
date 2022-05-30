@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Features",
+    "url": "/feature",
+    "class": "bold"
+  },
+  { "id": 2, "name": "Mobile", "url": "/mobile" },
+  { "id": 3, "name": "Actions", "url": "/features/actions" },
+  { "id": 4, "name": "Codespaces", "url": "/features/codespaces" },
+  { "id": 5, "name": "Packages", "url": "/features/packages" },
+  { "id": 6, "name": "Security", "url": "/features/security" },
+  { "id": 7, "name": "Code Review", "url": "/features/code-review" },
+  { "id": 8, "name": "Issues", "url": "/features/issues" },
+  { "id": 9, "name": "Integrations", "url": "/features/integrations" }
+]

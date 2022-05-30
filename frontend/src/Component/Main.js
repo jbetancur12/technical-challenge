@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../help/request'
 import RepoCard from './RepoCard/RepoCard'

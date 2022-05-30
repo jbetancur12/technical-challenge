@@ -3,7 +3,6 @@ import { Card, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './RepoCard.css'
 import './colors.css'
-import Metrics from '../Metrics/Metrics'
 
 export default function RepoCard(props) {
   const {
