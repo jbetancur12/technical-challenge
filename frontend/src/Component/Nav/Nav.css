@@ -5,6 +5,12 @@
   min-height: 48px;
 }
 
+@media only screen and (max-width: 768px) {
+  .navgit {
+    display: none;
+  }
+}
+
 .navgit-menu {
   display: flex;
   gap: 8px;

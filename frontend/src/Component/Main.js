@@ -23,7 +23,9 @@ export default function Main() {
   return (
     <Container>
       <Row>
-        <Col md={3}>{User && <ProfileInformation user={User} />}</Col>
+        <Col xs={12} lg={3}>
+          {User && <ProfileInformation user={User} />}
+        </Col>
         <Col>
           <Filter repos={Repos} />
           {Repos.length > 0 &&
