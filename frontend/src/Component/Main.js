@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../help/request'
+import ProfileInformation from './ProfileInformation/ProfileInformation'
 import RepoCard from './RepoCard/RepoCard'
 
 export default function Main() {
@@ -21,6 +22,7 @@ export default function Main() {
   return (
     <Container>
       <Row>
+        <Col md={3}>{User && <ProfileInformation user={User} />}</Col>
         <Col>
           {Repos.length > 0 &&
             Repos.map((repo) => (

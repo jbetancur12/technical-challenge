@@ -9,11 +9,13 @@ import {
 } from 'react-router-dom'
 import Header from './Component/Header/Header'
 import Main from './Component/Main'
+import Nav from './Component/Nav/Nav'
 import { getUserInfo } from './help/request'
 
 export const AppRouter = () => (
   <Router>
     <Header />
+    <Nav />
     <Switch>
       <Route exact path="/:username" component={Main} />
       <Route path="*">
