@@ -37,6 +37,7 @@
 }
 .repo-info {
   display: inline-flex;
+  font-size: 14px;
 }
 .repo-info_item {
   margin-right: 15px;

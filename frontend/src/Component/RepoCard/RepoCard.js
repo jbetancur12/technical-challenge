@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import DateTime from '../../help/DateTimeInfo'
 import './RepoCard.css'
 import './colors.css'
 
@@ -11,6 +12,8 @@ export default function RepoCard(props) {
     topics,
     visibility
   } = props.r
+
+  const updatedDate = DateTime(props.r.updated_at)
 
   return (
     <Container className="mb-3">
@@ -112,6 +115,7 @@ export default function RepoCard(props) {
               </span>
             </div>
           ) : null}
+          <div>{updatedDate}</div>
         </div>
       </Row>
       <Row>{/* <Metrics owner={props.username} repo={repoName} /> */}</Row>
