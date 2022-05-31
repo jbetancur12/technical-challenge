@@ -48,9 +48,9 @@ export default function Main(props) {
   }, [username])
 
   useEffect(() => {
-    getUserInfo(`${API_URL}users/${username}/repos?page=${page}`).then((resp) =>
-      setRepos(resp)
-    )
+    getUserInfo(
+      `${API_URL}users/${username}/repos?sort=updated&page=${page}`
+    ).then((resp) => setRepos(resp))
   }, [User, page])
 
   return (
