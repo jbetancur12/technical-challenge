@@ -35,7 +35,7 @@ const DateTimeInfo = (
       if (interval < 3600) {
         const isMinutePlural = Math.floor(interval / 60) >= 2
         const plural = isMinutePlural ? 's' : ' '
-        result = `Updated ${Math.floor(interval / 60)} minuto${plural} ago`
+        result = `Updated ${Math.floor(interval / 60)} minute${plural} ago`
         return result
       }
       if (interval < 86400) {
@@ -54,7 +54,7 @@ const DateTimeInfo = (
         if (hasSameDay) {
           const isHourPlural = Math.floor(interval / 3600) >= 2
           const plural = isHourPlural ? 's' : ' '
-          result = `Updated ${Math.floor(interval / 3600)} hora${plural} ago`
+          result = `Updated ${Math.floor(interval / 3600)} hours${plural} ago`
           return result
         } else return NoRelativeDay(publishDate, localeString)
       } else return NoRelativeDay(publishDate, localeString)
