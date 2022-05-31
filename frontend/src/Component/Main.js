@@ -11,6 +11,29 @@ export default function Main(props) {
   const { username } = useParams()
   const [User, setUser] = useState([])
   const [Repos, setRepos] = useState([])
+  const [search, setSearch] = useState({ language: '', type: '', input: '' })
+
+  const reposSearch = Repos.filter((repo) => {
+    if (search) {
+      const languageFilter =
+        search.language === 'All' || search.language === ''
+          ? true
+          : search.language === repo.language
+
+      const typeFilter =
+        typeof repo[search.type] === 'undefined' ? true : repo[search.type]
+
+      console.log(typeof repo[search.type])
+      return (
+        repo.name.toLowerCase().includes(search.input.toLowerCase()) &&
+        languageFilter &&
+        typeFilter
+      )
+    }
+    return true
+  })
+
+  console.log(search)
 
   useEffect(() => {
     getUserInfo(`${API_URL}users/${username}`).then((resp) => {
@@ -31,9 +54,9 @@ export default function Main(props) {
           {User && <ProfileInformation user={User} />}
         </Col>
         <Col>
-          <Filter repos={Repos} />
-          {Repos.length > 0 &&
-            Repos.map((repo) => (
+          <Filter repos={Repos} search={search} setSearch={setSearch} />
+          {reposSearch.length > 0 &&
+            reposSearch.map((repo) => (
               <RepoCard
                 name={repo.name}
                 description={repo.description}

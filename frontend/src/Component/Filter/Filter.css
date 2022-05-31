@@ -22,8 +22,8 @@
   flex: auto;
 }
 
-#select-type,
-#select-language {
+.select-type,
+.select-language {
   border-radius: 6px;
   border: 1px solid #d0d7de;
   background: #f6f8fa;
