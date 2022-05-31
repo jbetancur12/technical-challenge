@@ -27,7 +27,6 @@ export default function Filter(props) {
   ))
 
   const onChangeHandler = (e) => {
-    console.log(e.target.id)
     props.setSearch({ ...props.search, [e.target.id]: e.target.value })
   }
 

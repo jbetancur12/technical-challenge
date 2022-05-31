@@ -14,7 +14,6 @@ import { getUserInfo } from './help/request'
 
 export const AppRouter = () => {
   const [repositories, setRepositories] = useState(0)
-  console.log(repositories)
 
   return (
     <Router>

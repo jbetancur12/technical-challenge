@@ -16,8 +16,6 @@ export default function Main(props) {
   const [search, setSearch] = useState({ language: '', type: '', input: '' })
   const [page, setPage] = useState(1)
 
-  console.log(page)
-
   const reposSearch = Repos.filter((repo) => {
     if (search) {
       const languageFilter =
@@ -28,7 +26,6 @@ export default function Main(props) {
       const typeFilter =
         typeof repo[search.type] === 'undefined' ? true : repo[search.type]
 
-      console.log(typeof repo[search.type])
       return (
         repo.name.toLowerCase().includes(search.input.toLowerCase()) &&
         languageFilter &&
@@ -37,8 +34,6 @@ export default function Main(props) {
     }
     return true
   })
-
-  console.log(search)
 
   useEffect(() => {
     getUserInfo(`${API_URL}users/${username}`).then((resp) => {
