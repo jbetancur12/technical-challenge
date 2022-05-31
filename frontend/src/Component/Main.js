@@ -64,10 +64,10 @@ export default function Main(props) {
                   description={repo.description}
                   topics={repo.topics}
                   visibility={repo.visibility}
-                  updated_at={repo.updated_at}
+                  updatedAt={repo.updated_at}
                   language={repo.language}
-                  stargazers_count={repo.stargazers}
-                  forks_counts={repo.forkers}
+                  stargazersCount={repo.stargazers}
+                  forksCounts={repo.forkers}
                   license={repo.license}
                   username={User.login}
                   key={repo.name}
