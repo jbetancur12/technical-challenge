@@ -54,7 +54,7 @@ const DateTimeInfo = (
         if (hasSameDay) {
           const isHourPlural = Math.floor(interval / 3600) >= 2
           const plural = isHourPlural ? 's' : ' '
-          result = `Updated ${Math.floor(interval / 3600)} hours${plural} ago`
+          result = `Updated ${Math.floor(interval / 3600)} hour${plural} ago`
           return result
         } else return NoRelativeDay(publishDate, localeString)
       } else return NoRelativeDay(publishDate, localeString)
