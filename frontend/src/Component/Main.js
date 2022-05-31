@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../help/request'
 import Filter from './Filter/Filter'
+import Footer from './Footer/Footer'
 import Pagination from './Pagination/Pagination'
 import ProfileInformation from './ProfileInformation/ProfileInformation'
 import RepoCard from './RepoCard/RepoCard'
@@ -62,23 +63,27 @@ export default function Main(props) {
           <Filter repos={Repos} search={search} setSearch={setSearch} />
           {reposSearch.length > 0 &&
             reposSearch.map((repo) => (
-              <RepoCard
-                name={repo.name}
-                description={repo.description}
-                topics={repo.topics}
-                visibility={repo.visibility}
-                updated_at={repo.updated_at}
-                language={repo.language}
-                stargazers_count={repo.stargazers}
-                forks_counts={repo.forkers}
-                license={repo.license}
-                username={User.login}
-                key={repo.name}
-              />
+              <>
+                <RepoCard
+                  name={repo.name}
+                  description={repo.description}
+                  topics={repo.topics}
+                  visibility={repo.visibility}
+                  updated_at={repo.updated_at}
+                  language={repo.language}
+                  stargazers_count={repo.stargazers}
+                  forks_counts={repo.forkers}
+                  license={repo.license}
+                  username={User.login}
+                  key={repo.name}
+                />
+                <hr className="repo-line" />
+              </>
             ))}
         </Col>
       </Row>
       <Pagination setPage={setPage} page={page} repoCount={Repos.length} />
+      <Footer />
     </Container>
   )
 }
