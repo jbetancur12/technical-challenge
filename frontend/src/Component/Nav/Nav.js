@@ -24,7 +24,10 @@ export default function Nav(props) {
                 </svg>
                 Overview
               </Link>
-              <NavLink to="?tab=repositories" className="navgit-item">
+              <NavLink
+                to="?tab=repositories"
+                className="navgit-item"
+                activeClassName="navgit_isActive">
                 <svg
                   aria-hidden="true"
                   height="16"

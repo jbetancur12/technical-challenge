@@ -5,6 +5,17 @@
   min-height: 48px;
 }
 
+.navgit_isActive:after {
+  content: '';
+  /* background-color: red; */
+  position: absolute;
+  bottom: calc(50% - 25px);
+  border-bottom: 2px solid #f78166;
+
+  width: 100%;
+  border-radius: 6px;
+}
+
 @media only screen and (max-width: 768px) {
   .navgit {
     display: none;
@@ -27,7 +38,7 @@
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
-  background-color: transparent;
+  /* background-color: transparent; */
   border: 0;
   border-radius: 6px;
   align-items: center;
