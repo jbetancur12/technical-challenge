@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../help/request'
 import Filter from './Filter/Filter'
+import Pagination from './Pagination/Pagination'
 import ProfileInformation from './ProfileInformation/ProfileInformation'
 import RepoCard from './RepoCard/RepoCard'
 
@@ -12,6 +13,9 @@ export default function Main(props) {
   const [User, setUser] = useState([])
   const [Repos, setRepos] = useState([])
   const [search, setSearch] = useState({ language: '', type: '', input: '' })
+  const [page, setPage] = useState(1)
+
+  console.log(page)
 
   const reposSearch = Repos.filter((repo) => {
     if (search) {
@@ -43,10 +47,11 @@ export default function Main(props) {
   }, [username])
 
   useEffect(() => {
-    getUserInfo(`${API_URL}users/${username}/repos`).then((resp) =>
+    getUserInfo(`${API_URL}users/${username}/repos?page=${page}`).then((resp) =>
       setRepos(resp)
     )
-  }, [User])
+  }, [User, page])
+
   return (
     <Container>
       <Row>
@@ -73,6 +78,7 @@ export default function Main(props) {
             ))}
         </Col>
       </Row>
+      <Pagination setPage={setPage} page={page} repoCount={Repos.length} />
     </Container>
   )
 }
