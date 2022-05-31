@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "prettier": "prettier-config-standard",
+  "homepage": "https://jbetancur12.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -34,7 +35,8 @@
     "start": "PORT=3001 BROWSER=none ESLINT_NO_DEV_ERRORS=true react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -58,6 +60,7 @@
     "@cypress/instrument-cra": "^1.4.0",
     "@testing-library/dom": ">=7.21.4",
     "@testing-library/react-hooks": "^7.0.0",
+    "gh-pages": "^4.0.0",
     "lint-staged": "^10.5.4",
     "nock": "^13.1.0",
     "prettier-config-standard": "^4.0.0",

@@ -28,8 +28,11 @@ const RepoCard = ({
         <div>
           <h3>
             <Link
-              to={`https://github.com/${username}/${name}`}
-              className="repo-link">
+              to={{ pathname: `https://github.com/${username}/${name}` }}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="repo-link"
+              replace>
               {name}
             </Link>
             <span className="repo-label mb-1">{visibility}</span>
@@ -45,7 +48,9 @@ const RepoCard = ({
             topics.map((topic) => (
               <Link
                 key={topic}
-                to={`https://github.com/topics/${topic}`}
+                to={{ pathname: `https://github.com/topics/${topic}` }}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="repo-topic">
                 {topic}
               </Link>
