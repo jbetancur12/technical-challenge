@@ -13,7 +13,7 @@ interface Props {
   setRepositories: (n: number) => void
 }
 
-interface Search {
+export interface Search {
   language: string
   type: string
   input: string
