@@ -12,7 +12,7 @@ export default function Dropdown(props) {
         y="0"
         viewBox="0 0 14 8"
         fill="none"
-        class="dropdown-iconChevon">
+        className="dropdown-iconChevon">
         <path d="M1,1l6.2,6L13,1"></path>
       </svg>
       <div className="dropdown-content">
