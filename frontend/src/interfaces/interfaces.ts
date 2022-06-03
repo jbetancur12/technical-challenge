@@ -38,7 +38,7 @@ export interface reposInterface {
   node_id: string
   name: string
   full_name: string
-  private: false
+  private: boolean
   owner: {
     login: string
     id: number
@@ -57,11 +57,11 @@ export interface reposInterface {
     events_url: string
     received_events_url: string
     type: string
-    site_admin: false
+    site_admin: boolean
   }
   html_url: string
   description: string
-  fork: true
+  fork: boolean
   url: string
   forks_url: string
   keys_url: string
@@ -106,20 +106,20 @@ export interface reposInterface {
   ssh_url: string
   clone_url: string
   svn_url: string
-  homepage: null
+  homepage: string
   size: number
   stargazers_count: number
   watchers_count: number
   language: string | null
-  has_issues: false
-  has_projects: true
-  has_downloads: true
-  has_wiki: true
-  has_pages: false
+  has_issues: boolean
+  has_projects: boolean
+  has_downloads: boolean
+  has_wiki: boolean
+  has_pages: boolean
   forks_count: number
   mirror_url: null
-  archived: false
-  disabled: false
+  archived: boolean
+  disabled: boolean
   open_issues_count: number
   license: {
     key: string
@@ -127,10 +127,10 @@ export interface reposInterface {
     spdx_id: string
     url: string
     node_id: string
-  }
-  allow_forking: true
-  is_template: false
-  topics: any[]
+  } | null
+  allow_forking: boolean
+  is_template: boolean
+  topics: string[]
   visibility: string
   forks: number
   open_issues: number
