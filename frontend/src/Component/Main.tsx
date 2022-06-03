@@ -74,7 +74,7 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
     <Container>
       <Row>
         <Col xs={12} lg={3}>
-          {(User != null) && <ProfileInformation user={User} />}
+          {User != null && <ProfileInformation profile={User} />}
         </Col>
         <Col>
           <Filter repos={Repos} search={search} setSearch={setSearch} />
