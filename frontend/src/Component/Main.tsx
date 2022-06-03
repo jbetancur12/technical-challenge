@@ -8,6 +8,7 @@ import Footer from './Footer/Footer'
 import Pagination from './Pagination/Pagination'
 import ProfileInformation from './ProfileInformation/ProfileInformation'
 import RepoCard from './RepoCard/RepoCard'
+import Spinner from './Spinner/Spinner'
 
 interface Props {
   setRepositories: (n: number) => void
@@ -24,6 +25,7 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
   const { username } = useParams<{ username: string }>()
   const [User, setUser] = useState<profileInterface>()
   const [Repos, setRepos] = useState<reposInterface[]>([])
+  const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState<Search>({
     language: '',
     type: '',
@@ -66,6 +68,7 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
     getUserInfo(`${API_URL}users/${username}/repos?sort=updated&page=${page}`)
       .then((resp) => {
         setRepos(resp)
+        setLoading(false)
       })
       .catch((err) => console.error(err))
   }, [User, page])
@@ -76,15 +79,23 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
         <Col xs={12} lg={3}>
           {User != null && <ProfileInformation profile={User} />}
         </Col>
-        <Col>
+        <Col style={{ minHeight: '1000px' }}>
           <Filter repos={Repos} search={search} setSearch={setSearch} />
-          {reposSearch.length > 0 &&
+          {loading ? (
+            <div
+              className='d-flex d-flex justify-content-center'
+              style={{ marginTop: 250 }}
+            >
+              <Spinner />
+            </div>
+          ) : (
             reposSearch.map((repo) => (
               <div key={repo.name}>
                 <RepoCard repo={repo} username='Jorge' />
                 <hr className='repo-line' />
               </div>
-            ))}
+            ))
+          )}
         </Col>
       </Row>
       <Pagination setPage={setPage} page={page} repoCount={Repos.length} />
