@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import { getUserInfo } from '../help/request'
+import { useFetch } from '../hooks/useFetch'
 import { profileInterface, reposInterface } from '../interfaces/interfaces'
 import Filter from './Filter/Filter'
 import Footer from './Footer/Footer'
@@ -20,12 +20,19 @@ export interface Search {
   input: string
 }
 
+interface profileFecthed {
+  data: profileInterface
+}
+
+interface reposFecthed {
+  data: reposInterface[]
+  status: string
+}
+
 const Main = ({ setRepositories }: Props): JSX.Element => {
   const API_URL = 'https://api.github.com/'
   const { username } = useParams<{ username: string }>()
-  const [User, setUser] = useState<profileInterface>()
-  const [Repos, setRepos] = useState<reposInterface[]>([])
-  const [loading, setLoading] = useState(true)
+
   const [search, setSearch] = useState<Search>({
     language: '',
     type: '',
@@ -33,7 +40,15 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
   })
   const [page, setPage] = useState(1)
 
-  const reposSearch: reposInterface[] = Repos.filter((repo) => {
+  const userFetch = useFetch(`${API_URL}users/${username}`)
+  const reposFetch = useFetch(
+    `${API_URL}users/${username}/repos?sort=updated&page=${page}`
+  )
+
+  const { data: user }: profileFecthed = userFetch
+  const { data: repos, status: loading }: reposFecthed = reposFetch
+
+  const reposSearch: reposInterface[] = repos.filter((repo) => {
     const languageFilter =
       search.language === 'All' || search.language === ''
         ? true
@@ -51,37 +66,17 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
     )
   })
 
-  useEffect(() => {
-    getUserInfo(`${API_URL}users/${username}`)
-      .then((resp: profileInterface) => {
-        setUser(resp)
-        if (typeof resp.public_repos === 'number') {
-          setRepositories(resp.public_repos)
-        } else {
-          setRepositories(0)
-        }
-      })
-      .catch((err) => console.error(err))
-  }, [username])
-
-  useEffect(() => {
-    getUserInfo(`${API_URL}users/${username}/repos?sort=updated&page=${page}`)
-      .then((resp) => {
-        setRepos(resp)
-        setLoading(false)
-      })
-      .catch((err) => console.error(err))
-  }, [User, page])
+  if (userFetch.status === 'fetched') setRepositories(user.public_repos)
 
   return (
     <Container>
       <Row>
         <Col xs={12} lg={3}>
-          {User != null && <ProfileInformation profile={User} />}
+          {user != null && <ProfileInformation profile={user} />}
         </Col>
         <Col style={{ minHeight: '1000px' }}>
-          <Filter repos={Repos} search={search} setSearch={setSearch} />
-          {loading ? (
+          <Filter repos={repos} search={search} setSearch={setSearch} />
+          {loading !== 'fetched' ? (
             <div
               className='d-flex d-flex justify-content-center'
               style={{ marginTop: 250 }}
@@ -98,7 +93,7 @@ const Main = ({ setRepositories }: Props): JSX.Element => {
           )}
         </Col>
       </Row>
-      <Pagination setPage={setPage} page={page} repoCount={Repos.length} />
+      <Pagination setPage={setPage} page={page} repoCount={repos.length} />
       <Footer />
     </Container>
   )

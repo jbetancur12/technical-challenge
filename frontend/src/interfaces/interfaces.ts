@@ -25,7 +25,7 @@ export interface profileInterface {
   hireable?: string
   bio?: string
   twitter_username?: string
-  public_repos?: number
+  public_repos: number
   public_gists?: number
   followers?: number
   following?: number
