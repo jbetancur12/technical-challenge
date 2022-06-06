@@ -2,6 +2,7 @@ import { useEffect, useRef, useReducer } from 'react'
 
 export const useFetch = (url) => {
   const cache = useRef({})
+  console.log(cache.current[url])
 
   const initialState = {
     status: 'idle',
@@ -29,9 +30,11 @@ export const useFetch = (url) => {
     const fetchData = async () => {
       dispatch({ type: 'FETCHING' })
       if (cache.current[url]) {
+        console.log('2')
         const data = cache.current[url]
         dispatch({ type: 'FETCHED', payload: data })
       } else {
+        console.log('1')
         try {
           const response = await fetch(url)
           const data = await response.json()
